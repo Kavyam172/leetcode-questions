@@ -11,20 +11,20 @@ public:
         else{
             temp=x;
         }
-            while(temp>0){
-                int n;
-                n=temp%10;
-                cout << n;
-                if(new_x>(pow(2,31))/10 || (new_x==(pow(2,31))/10 && n>7))
-                {
-                    return 0;
-                }
-                new_x=(new_x*10)+n;
-                temp/=10;
+        while(temp>0){
+            int n;
+            n=temp%10;
+            cout << n;
+            if(new_x>(pow(2,31))/10 || (new_x==(pow(2,31))/10))
+            {
+                return 0;
             }
-            if(flag){
-                return new_x*-1;
-            }
-            return new_x;
+            new_x=(new_x*10)+n;
+            temp/=10;
+        }
+        if(flag){
+            return new_x*-1;
+        }
+        return new_x;
     }
 };
