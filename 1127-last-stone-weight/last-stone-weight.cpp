@@ -10,8 +10,11 @@ public:
             pq.pop();
             int y = pq.top();
             pq.pop();
-            if(x!=y){
-                pq.push(abs(x-y));
+            if(x>y){
+                pq.push(x-y);
+            }
+            else if(y>x){
+                pq.push(y-x);
             }
         }
         if(pq.size()==0){
