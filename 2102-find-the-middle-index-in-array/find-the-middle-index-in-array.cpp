@@ -13,7 +13,6 @@ public:
                 return i;
             }
             left+=nums[i];
-            // cout<<left<<' '<<right<<'\n';
         }
         return -1;
     }
