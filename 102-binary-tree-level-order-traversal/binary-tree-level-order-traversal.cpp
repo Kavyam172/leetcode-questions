@@ -11,9 +11,6 @@
  */
 class Solution {
 public:
-    void traversal(TreeNode* Node, vector<vector<int>>& tree){
-
-    }
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> tree;
         if(root==NULL){
