@@ -6,9 +6,6 @@ public:
         int high = nums.size()-1;
         int mid = (low+high)/2;
         int start = -1,end = -1;
-        // if(nums.size()==1 && nums[0]==target){
-        //     return {0,0};
-        // }
         while(low<=high){
             if(nums[mid]==target){
                 start = mid;
