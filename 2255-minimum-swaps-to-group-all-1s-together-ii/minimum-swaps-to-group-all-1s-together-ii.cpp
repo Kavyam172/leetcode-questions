@@ -9,6 +9,9 @@ public:
             }
             nums.push_back(nums[i]);
         }
+        if(ones==n || ones==0){
+            return 0;
+        }
         int i=0;
         int j = i+ones-1;
         int swaps = INT_MAX;
