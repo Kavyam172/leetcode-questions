@@ -14,23 +14,17 @@ public:
         if(head==nullptr){
             return head;
         }
-        while(head!=nullptr && head->val==val){
-            head = head->next;
-        }
-        if(head==nullptr){
-            return head;
-        }
-        ListNode* curr = head->next;
-        ListNode* prev = head;
-        while(curr!=nullptr){
-            if(curr->val==val){
-                prev->next = curr->next;
-                curr = curr->next;
+        ListNode* temp = new ListNode(0);
+        temp->next = head;
+        ListNode* curr = temp;
+        while(curr->next!=nullptr){
+            if(curr->next->val==val){
+                curr->next = curr->next->next;
                 continue;
             }
-            prev = curr;
             curr = curr->next;
         }
-        return head;
+        
+        return temp->next;
     }
 };
