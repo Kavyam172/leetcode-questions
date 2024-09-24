@@ -16,7 +16,6 @@ public:
             i++;
             sum+=nums[j+1];
             j++;
-            cout<<sum<<endl;
             maxavg = max(maxavg,(sum/k));
         }
         return maxavg;
