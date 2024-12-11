@@ -34,9 +34,8 @@ class Solution {
             return false;
         }
         for(int i=0;i<seq1.size();i++){
-            int a = seq1.get(i);
-            int b = seq2.get(i);
-            if(a!=b){
+            if(!seq1.get(i).equals(seq2.get(i))){
+                // System.out.printf("%d %d\n",seq1.get(i),seq2.get(i));
                 return false;
             }
         }
