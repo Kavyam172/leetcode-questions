@@ -14,29 +14,35 @@
  * }
  */
 class Solution {
-    int ans = 0;
-    public void helper2(TreeNode root,int targetSum,long currSum){
+    public int helper(TreeNode root,int targetSum,long currSum,Map<Long,Integer> prefix){
         if(root==null){
-            return;
-        }
-        currSum+=root.val;
-        if(currSum==targetSum){
-            ans++;
-        }
-        helper2(root.left,targetSum,currSum);
-        helper2(root.right,targetSum,currSum);
-    }
-    public void helper(TreeNode root,int targetSum){
-        if(root==null){
-            return;
+            return 0;
         }
 
-        helper(root.left,targetSum);
-        helper2(root,targetSum,0);
-        helper(root.right,targetSum);
+
+        currSum+=root.val;
+
+        int ans = 0;
+        // if(root.val==targetSum){
+        //     ans++;
+        // }
+        if(currSum==targetSum){
+            ans+=1;
+        }
+        ans += prefix.getOrDefault(currSum-targetSum,0);
+
+        prefix.put(currSum,prefix.getOrDefault(currSum,0)+1);
+
+        ans+=helper(root.left,targetSum,currSum,prefix);
+        ans+=helper(root.right,targetSum,currSum,prefix);
+
+        prefix.put(currSum,prefix.getOrDefault(currSum,0)-1);
+
+        return ans;
+
     }
     public int pathSum(TreeNode root, int targetSum) {
-        helper(root,targetSum);
-        return ans;
+        Map<Long,Integer> prefix = new HashMap<>();
+        return helper(root,targetSum,0,prefix);
     }
 }
