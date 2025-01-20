@@ -21,7 +21,7 @@ class Solution {
         return dp[n][prev+1];
     }
     public int lengthOfLIS(int[] nums) {
-        int[][] dp = new int[nums.length+1][nums.length];
+        int[][] dp = new int[nums.length][nums.length];
         for(int[] i:dp){
             Arrays.fill(i,-1);
         }
