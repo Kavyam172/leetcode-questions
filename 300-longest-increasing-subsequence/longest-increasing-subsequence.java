@@ -1,30 +1,24 @@
 class Solution {
-    public int helper(int[] nums,int prev,int n,int[][] dp){
-        if(n>=nums.length){
+    
+    public int lengthOfLIS(int[] nums) {
+        if(nums.length==0){
             return 0;
         }
 
-        if(prev==-1){
-            dp[n][prev+1] = Math.max(helper(nums,prev,n+1,dp),1+helper(nums,n,n+1,dp));
-            return dp[n][prev+1];
-        }
+        int[] dp = new int[nums.length];
+        int l = 0;
 
-        if(nums[n]>nums[prev]){
-            if(dp[n][prev+1]!=-1){
-                return dp[n][prev+1];
+        for(int num:nums){
+            int idx = Arrays.binarySearch(dp,0,l,num);
+            if(idx<0){
+                idx = -(idx+1);
             }
-            dp[n][prev+1] = Math.max(helper(nums,prev,n+1,dp),1+helper(nums,n,n+1,dp));
-            return dp[n][prev+1];
+            dp[idx] = num;
+            if(idx==l){
+                l++;
+            }
         }
 
-        dp[n][prev+1] = helper(nums,prev,n+1,dp);
-        return dp[n][prev+1];
-    }
-    public int lengthOfLIS(int[] nums) {
-        int[][] dp = new int[nums.length][nums.length];
-        for(int[] i:dp){
-            Arrays.fill(i,-1);
-        }
-        return helper(nums,-1,0,dp);
+        return l;
     }
 }
