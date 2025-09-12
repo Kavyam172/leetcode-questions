@@ -1,20 +1,11 @@
 class Solution {
-    public int countVowels(String s){
-        int vowels = 0;
-        for(char c:s.toCharArray()){
-            if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
-                vowels++;
+    public boolean doesAliceWin(String s) {
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(c=='a' || c=='e' || c=='i' || c=='u' || c=='o'){
+                return true;
             }
         }
-        return vowels;
-    }
-    public boolean doesAliceWin(String s) {
-        int v = countVowels(s);
-        if(v==0){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return false;
     }
 }
