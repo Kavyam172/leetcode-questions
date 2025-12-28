@@ -7,7 +7,8 @@ class Solution {
         for(int i=0;i<r;i++){
             for(int j=0;j<c;j++){
                 if(grid[i][j]<0){
-                    cnt++;
+                    cnt+=c-j;
+                    break;
                 }
             }
         }
