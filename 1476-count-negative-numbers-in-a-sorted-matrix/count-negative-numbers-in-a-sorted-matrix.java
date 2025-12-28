@@ -5,12 +5,25 @@ class Solution {
         int c = grid[0].length;
 
         for(int i=0;i<r;i++){
-            for(int j=0;j<c;j++){
-                if(grid[i][j]<0){
-                    cnt+=c-j;
-                    break;
+            int low = 0;
+            int high = c-1;
+            int mid = (low+high)/2;
+            int neg = c;
+
+            while(low<=high){
+                if(grid[i][mid]>=0){
+                    low = mid+1;
                 }
+                else{
+                    neg = mid;
+                    high = mid - 1;
+                }
+                mid = (low+high)/2;
             }
+
+
+            cnt+= c-neg;
+
         }
 
         return cnt;
